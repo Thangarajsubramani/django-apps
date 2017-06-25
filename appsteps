@@ -1,0 +1,45 @@
+#To create project
+django-admin startproject mysite
+#To create app
+python manage.py startapp companies
+# Please include rest_framework ,  companies.apps.CompaniesConfig under INSTALLED_APPS section in website settings.py 
+
+INSTALLED_APPS=[
+rest_framework,
+companies.apps.CompaniesConfig
+]
+
+#create the stock sample model
+class Stock(models.Model):
+
+  ticker=Models.CharField(max_length=10)
+  open= Models.FloatField()
+  close= Models.FloatField() 
+  volume= Models.IntegerField() 
+  def __str__():
+  
+      self.ticker
+       
+#register the stock model in the admin.py to mangage stock(add,edit,dlete items) table at admin page
+
+from .models import Stock
+
+admin.site.register(Stock)
+
+#To get the updated table strcture from model.
+
+python manage.py makemigrations
+
+#To create the table structure with schema.
+
+python manage.py migrate.
+
+#To create superuser for admin site in admin table.
+python manage.py createsuper
+
+
+
+
+
+
+
